@@ -1,14 +1,19 @@
 package com.example.sketch2.adapter;
 
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.sketch2.Pojo.Row;
 import com.example.sketch2.R;
 
@@ -18,6 +23,7 @@ public class DangerAdapter extends RecyclerView.Adapter<DangerAdapter.ViewHolder
 
     private List<Row> dangerList;
     private View.OnClickListener onItemViewClickListener;
+
 
     public DangerAdapter(List<Row> dangerList){
         this.dangerList = dangerList;
@@ -58,11 +64,22 @@ public class DangerAdapter extends RecyclerView.Adapter<DangerAdapter.ViewHolder
             holder.food_title.setText(dangerList.get(position).getPRDTNM());
             holder.food_company.setText(dangerList.get(position).getBSSHNM());
             holder.food_reason.setText(dangerList.get(position).getRTRVLPRVNS());
-            //holder.food_img.setImageURI(collectionList.get(position).getIMG_FILE_PATH());
+
+            Glide.with(holder.food_img).load(setUrl(dangerList.get(position).getIMG_FILE_PATH())[0]).into(holder.food_img);
         } catch (Exception e) {System.out.println(e);}
     }
 
     public void setOnItemViewClickListener(View.OnClickListener onItemViewClickListener){
         this.onItemViewClickListener = onItemViewClickListener;
+    }
+
+    public void setFilter(List<Row> items){
+        dangerList = items;
+        notifyDataSetChanged();
+    }
+
+    public String[] setUrl(String Urls){
+        String[] parsedUrl = Urls.split(",");
+        return parsedUrl;
     }
 }

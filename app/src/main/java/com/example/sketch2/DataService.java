@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi;
 
 
 import com.example.sketch2.Pojo.MyPOJO;
+import com.example.sketch2.Pojo.Row;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
@@ -38,10 +39,10 @@ public class DataService implements Serializable {
 }
 
 interface SelectAPI{
-    @GET("api/{apikey}/I0490/json/1/50")
+    @GET("api/{apikey}/I0490/json/1/5")
     Call<MyPOJO> selectAll(@Path("apikey") String apikey);
 
-    //@GET("api/{apikey}/I0490/json/1/50/{attr}={value}")
-    //Call<> selectOne(@Path(attr))
+    @GET("api/{apikey}/I0490/json/1/50/{attr}={value}")
+    Call<Row> selectOne(@Path("attr")String attr, @Path("value")String value);
 
 }

@@ -4,16 +4,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="제품정보"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:layout_margin="10dp"
-        android:id="@+id/detail_big_title"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/my_child_toolbar"
+        android:background="@color/colorRedPink"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintTop_toTopOf="parent"/>
+
 
     <ImageView
         android:layout_width="match_parent"
@@ -21,8 +21,8 @@
         android:layout_margin="10dp"
         android:id="@+id/detail_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_big_title"
-        android:src="@drawable/temp_img" />
+        app:layout_constraintTop_toBottomOf="@+id/my_child_toolbar"
+         />
 
     <TextView
         android:layout_width="wrap_content"
