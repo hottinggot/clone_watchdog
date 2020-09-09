@@ -26,7 +26,7 @@ public class DataService implements Serializable {
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(15,TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
             .build();
 
     Retrofit retrofitClient =
@@ -38,11 +38,11 @@ public class DataService implements Serializable {
     SelectAPI select = retrofitClient.create(SelectAPI.class);
 }
 
-interface SelectAPI{
-    @GET("api/{apikey}/I0490/json/1/5")
+interface SelectAPI {
+    @GET("api/{apikey}/I0490/json/1/50")
     Call<MyPOJO> selectAll(@Path("apikey") String apikey);
 
     @GET("api/{apikey}/I0490/json/1/50/{attr}={value}")
-    Call<Row> selectOne(@Path("attr")String attr, @Path("value")String value);
+    Call<Row> selectOne(@Path("attr") String attr, @Path("value") String value);
 
 }
